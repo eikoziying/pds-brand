@@ -27,6 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm -r -F './packages/*' build:ci
       - run: pnpm -F ./apps/design-system exec vite build --base=/pds-brand/
+      - run: cp apps/design-system/dist/index.html apps/design-system/dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: apps/design-system/dist

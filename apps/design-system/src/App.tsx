@@ -9,15 +9,18 @@ import { DialogProvider, ThemeProvider, TranslationProvider } from '@harnessio/u
 
 import AppRouterProvider from './AppRouterProvider'
 
-const router = createBrowserRouter([
-  {
-    element: <AppRouterProvider />,
-    children: [
-      { path: '/view-preview/*', element: <ViewPreview /> },
-      { path: '/*', element: <Navigate to="/view-preview" /> }
-    ]
-  }
-])
+const router = createBrowserRouter(
+  [
+    {
+      element: <AppRouterProvider />,
+      children: [
+        { path: '/view-preview/*', element: <ViewPreview /> },
+        { path: '/*', element: <Navigate to="/view-preview" /> }
+      ]
+    }
+  ],
+  { basename: import.meta.env.BASE_URL }
+)
 
 const App: FC = () => {
   const themeStore = useThemeStore()

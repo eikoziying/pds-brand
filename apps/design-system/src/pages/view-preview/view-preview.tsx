@@ -624,6 +624,8 @@ export const viewPreviews: Record<string, ViewPreviewGroup> = {
   }
 }
 
+const firstItemRoute = Object.keys(Object.values(viewPreviews)[0].items)[0]
+
 const ViewPreview: FC = () => {
   return (
     <div className="cn-root">
@@ -633,7 +635,7 @@ const ViewPreview: FC = () => {
             <Route key={route} path={`${route}/*`} element={element} />
           ))
         )}
-        <Route path="/" element={<Navigate to={Object.keys(viewPreviews)[0]} />} />
+        <Route path="/" element={<Navigate to={firstItemRoute} />} />
       </Routes>
       <ViewSettings routes={Object.keys(viewPreviews)} />
     </div>
